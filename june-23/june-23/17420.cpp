@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
         }
     }
     
-    //람다식을 이용하여 sorting
+    //람다식을 이용하여 오름차순 sorting
     sort(v.begin(), v.end(), [&](p &a, p &b){
             if(a.y != b.y) return a.y < b.y;
             return a.x < b.x;
@@ -53,13 +53,13 @@ int main(int argc, const char * argv[]) {
 
             for(int j=i; j<nxt; j++){
                 if(v[j].x < now){
-                    int b = ((int)now - (int)v[j].x + 30 - 1) / 30;
+                    int b = ((int)now - (int)v[j].x + 30 - 1) / 30; //long long에서 int로 타입변경
                     cnt += b;
                     v[j].x += 30 * b;
                 }
             }
         
-            // i에서 nxt까지 sort
+            // i에서 nxt까지 오름차순 sorting
             sort(v.begin()+i, v.begin()+nxt, [&](p &a, p &b){
                 if(a.y != b.y) return a.y < b.y;
                 return a.x < b.x;
