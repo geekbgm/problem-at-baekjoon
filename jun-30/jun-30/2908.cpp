@@ -6,6 +6,8 @@
 //
 
 #include <iostream>
+#include <string>
+
 using namespace std;
 
 int main() {
@@ -15,14 +17,13 @@ int main() {
     
     string answer;
     
-    for(int i=2; i>0; i--){
-        if(num1[2]<num2[2]){
-            answer = num2;
-        }else if(num1[2]>num2[2]){
-            answer = num1;
+    for(int i=2; i>=0; i--){
+        if(num1[i] < num2[i]){
+            answer = num2; break;
+        }else if(num1[i] > num2[i]){
+            answer = num1; break;
         }
     }
-    
     
     cout<<answer[2]<<answer[1]<<answer[0]<<endl;
     
