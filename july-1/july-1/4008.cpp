@@ -9,15 +9,18 @@
 using namespace std;
 typedef long long int ll;
  
+
 struct lin{
     ll a,b;
 };
- 
+
+// convex hull trick 이용
 ll sz=0;
 lin stk[1010101];
 double cx(ll a,ll b) {
     return 1.0 * (double)(stk[a].b - stk[b].b) / (stk[b].a - stk[a].a);
 }
+
 void insert(lin v){
     stk[sz] = v;
     while(1<sz&&cx(sz-2,sz-1)>cx(sz-1,sz)){
@@ -26,6 +29,7 @@ void insert(lin v){
     }
     sz++;
 }
+
 ll sol(ll x){
     ll lo=0,hi=sz-1;
     while(lo<hi){
@@ -35,10 +39,8 @@ ll sol(ll x){
     }
     return stk[lo].a*x+stk[lo].b;
 }
-void clear(){
-    sz=0;
-}
- 
+
+
 ll x[1010101];
 ll pre[1010101];
 ll dp[1010101];
