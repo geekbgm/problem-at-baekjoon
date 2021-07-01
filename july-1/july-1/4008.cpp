@@ -39,31 +39,34 @@ ll sol(ll x){
     }
     return stk[lo].a*x+stk[lo].b;
 }
-
+///
 
 ll x[1010101];
 ll pre[1010101];
 ll dp[1010101];
  
 int main(){
-    ll a,b,c,n,i,j,k;
+    ll a,b,c,n;
     cin >> n ;
     cin >> a >> b>> c;
-    for(i=1;i<=n;i++){
+    for(int i=1;i<=n;i++){
         cin >> x[i];
         pre[i] = pre[i-1]+x[i]; //prefix sum
     }
+    
     lin l;
     l.a = b;
     l.b = 0;
     insert(l);
-    for(i=1;i<=n;i++){
+    
+    for(int i=1;i<=n;i++){
         dp[i] = c+a*pre[i]*pre[i]+sol(pre[i]);
         l.a = -2*a*pre[i]+b;
         l.b = dp[i]-b*pre[i]+a*pre[i]*pre[i];
         insert(l);
     }
-    printf("%lld",dp[n]);
+    
+    cout << dp[n]<<endl;
     return 0;
 }
 
