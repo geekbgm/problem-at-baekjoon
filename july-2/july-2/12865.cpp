@@ -8,7 +8,7 @@
 #include "stdc++.h"
 
 using namespace std;
-int N,K,item[102][2],dp[102][100'003];
+int N,K,item[102][2],dp[102][100'003]; // dp[아이템의 갯수][무게(인덱스로 표현)]
 
 int main() {
     // insert code here...
