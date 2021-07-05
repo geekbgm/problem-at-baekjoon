@@ -8,6 +8,7 @@
 #include <iostream>
 #include <queue>
 #define MAX 100010
+#define endl "\n"
 using namespace std;
 
 
@@ -40,7 +41,7 @@ void Find(){
 
 }
 
-int main(int argc, const char * argv[]) {
+int main() {
     
     ios::sync_with_stdio(false);
     cin.tie(NULL);
