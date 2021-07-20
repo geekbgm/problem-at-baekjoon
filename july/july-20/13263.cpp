@@ -11,6 +11,8 @@ struct lin{
  
 ll sz=0;
 lin stk[1010101];
+
+// Convex hull technique
 double cx(ll a,ll b) {
     return 1.0 * (double)(stk[a].b - stk[b].b) / (stk[b].a - stk[a].a);
 }
@@ -31,6 +33,8 @@ ll sol(ll x){
     }
     return stk[lo].a*x+stk[lo].b;
 }
+//
+
 void clear(){
     sz=0;
 }
@@ -40,25 +44,27 @@ ll brr[1010101];
 ll dp[1010101];
  
 int main(){
-    ll i,j,k,m,n;
+    ll n;
+
     cin >> n;
-    for(i=1;i<=n;i++)
+    for(int i=1;i<=n;i++)
         cin >> arr[i];
-    for(i=1;i<=n;i++)
+    for(int i=1;i<=n;i++)
         cin >> brr[i];
         
-    lin l;
-    l.a = brr[1];
-    l.b = 0;
-    insert(l);
+    lin vec;
+    vec.a = brr[1];
+    vec.b = 0;
+    insert(vec);
 
-    for(i=2;i<=n;i++){
+    for(int i=2;i<=n;i++){
         dp[i]=sol(arr[i]);
-        l.a = brr[i];
-        l.b = dp[i];
-        insert(l);
+        vec.a = brr[i];
+        vec.b = dp[i];
+        insert(vec);
     }
+
     cout << dp[n]<<endl;
-    
+
     return 0;
 }
