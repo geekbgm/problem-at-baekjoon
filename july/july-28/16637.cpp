@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int n, answer = INT_MIN;
+int n, answer = -987654321987654321;
 string str;
 
 int calculate(int a, int b, char opt){
@@ -40,6 +40,9 @@ void DFS(int idx, int cur){
 }
 
 int main(void){
+    ios_base::sync_with_stdio(0); 
+    cin.tie(0);
+
     cin >> n>>str;
 
     DFS(0,0);
