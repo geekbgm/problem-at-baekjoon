@@ -9,7 +9,7 @@ typedef pair<int, int> pp;
 int N, M, D;
 int arr[MAX][MAX];
 int copyArr[MAX][MAX];
-int result = 0;
+int answer = 0;
 
 int main(void)
 {
@@ -44,11 +44,13 @@ int main(void)
 		archer.push_back(1);
 	}
 
+    //순열만든 후 게임 시작
     do
 	{
         
-		int cnt = 0;
-		// 적들의 좌표를 복사
+		int kill = 0;
+
+        //적 좌표 복사
 		vector<pair<int, int>  > temp = enemy;
 
 		vector<int> v;
@@ -74,25 +76,23 @@ int main(void)
 				int enemyX = temp[0].second;
 				int dist = abs(y - temp[0].first) + abs(x - temp[0].second);
 
-				for (int j = 1; j < temp.size(); j++)
+				for (int j = 1; j < temp.size(); j++) //모든 적들에 대해서 계산
 				{
 					int tempDist = abs(y - temp[j].first) + abs(x - temp[j].second);
 					
-					// 더 가까운 적
+					// 더 가까운 적 그리고 거리가 모두 동일하면 왼쪽에 있는 적
 					if (dist > tempDist)
 					{
 						enemyX = temp[j].second;
 						dist = tempDist;
 						idx = j;
 					}
-					// 거리가 같다면 더 왼쪽에 있는 적
 					else if (dist == tempDist && enemyX > temp[j].second)
 					{
 						enemyX = temp[j].second;
 						idx = j;
 					}
 				}
-
 				// D 이내에 있는 적만 처치 가능
 				if (dist <= D)
 				{
@@ -105,11 +105,11 @@ int main(void)
 			sort(target.begin(), target.end());
 			int shoot = 0;
 
-			// 적을 처치
+			// 적을 처치함
 			for (int i = 0; i < target.size(); i++)
 			{
 				temp.erase(temp.begin() + (target[i] - shoot++));
-				cnt++;
+				kill++;
 			}
 
 			if (temp.empty())
@@ -130,9 +130,9 @@ int main(void)
 			temp = copyTemp;
 		}
 
-		result = max(result, cnt);
+		answer = max(answer, kill);
 	} while (next_permutation(archer.begin(), archer.end()));
     
-	cout << result << "\n";
+	cout << answer << "\n";
 	return 0;
 }
