@@ -1,7 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #define MAX 10
-#define INF = 999999999
+#define INF 987000000
 
 using namespace std;
 
@@ -13,13 +13,23 @@ int paper[6] = {0,5,5,5,5,5};
 
 void func(int y, int x){
 
-    if(x==MAX){
+    if(x == MAX){
         func(y+1,0);
         return;
     }
 
+    if(y == MAX){
+        answer = min(answer, cnt);
+        return;
+    }
 
-    for( int i 5; i>=1; i--){
+    if(arr[y][x] == 0){ 
+        func(y, x+1);
+        return;
+    }
+
+
+    for( int i =5; i >= 1; i--){
         
         if(paper[i] == 0 || y+i > MAX|| x+i > MAX){
             continue;
@@ -27,9 +37,9 @@ void func(int y, int x){
 
         bool flag =true;
 
-        for( int j =0; j<i; i++){
+        for( int j =0; j<i; j++){
 
-            for(int k=0; k<i ;k ++){
+            for(int k=0; k<i ; k++){
 
                 if(arr[y+j][x+k]==0){
                     flag = false;
@@ -57,7 +67,7 @@ void func(int y, int x){
         }
 
         paper[i]--;
-        cnt++
+        cnt++;
 
         func(y, x+i);
 
@@ -80,19 +90,22 @@ void func(int y, int x){
 
 int main(){
 
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+
     for(int i=0; i<MAX ; i++){
         for(int j =0; j<MAX;j++){
             cin >> arr[i][j];
         }
     }
 
-    result = INF;
+    answer = INF;
     func(0,0);
 
-    if(result == INF){
+    if(answer == INF){
         cout<< -1 <<endl;
     }else{
-        cout<< result <<endl;
+        cout<< answer <<endl;
     }
 
     return 0;
