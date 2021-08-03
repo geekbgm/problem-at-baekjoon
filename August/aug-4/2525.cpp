@@ -4,23 +4,14 @@ using namespace std;
 
 int main(){
     int A,B,C;
-    int result_A, result_B;
 
     cin >> A >> B ;
     cin >> C;
 
-    result_A = A;
-    result_B = B+C;
-    
+    B += C;
+    A += B/60;
 
-    if(result_B>=60){
-        result_A += result_B/60;
-        result_B %= 60;
-    }
-
-    result_A %= 24;
-
-    cout << result_A <<" "<<result_B<<endl;
+    cout << A%24 <<" "<<B%60<<endl;
 
     return 0;
 }
