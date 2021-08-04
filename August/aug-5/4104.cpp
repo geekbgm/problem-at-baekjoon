@@ -11,9 +11,9 @@ int main(){
         if(A == 0 && B==0){
             break;
         }else if(A>B){
-            cout<<"No"<<endl;
-        }else{
             cout<<"Yes"<<endl;
+        }else{
+            cout<<"No"<<endl;
         }
     }
 
