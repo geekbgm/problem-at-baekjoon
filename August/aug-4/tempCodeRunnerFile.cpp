@@ -1,2 +1,0 @@
-
-        cout<<A*B<<endl;
